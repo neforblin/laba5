@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Pudge - создать статью</title>
+    <link rel="stylesheet" href="{{ STATIC_URL }}/static/style.css">
+</head>
+
+
+  <body>
+
+    <header class="header">
+      <h1>Написать статью</h1>
+    </header>
+
+    <main class="main-post">
+      <form method="POST" class="form">
+        {% csrf_token %}
+        <!-- добавляет специальное скрытое поле в форму -->
+        <input class="input-title"
+          type="text"
+          name="title"
+          placeholder="Название статьи"
+          value="{{ form.title }}"
+        />
+
+        <textarea class="textarea" name="text" placeholder="Текст статьи">{{ form.text }}</textarea>
+
+        <input class="input-submit" type="submit" value="Сохранить" />
+      </form>
+      {{ form.errors }}
+    </main>
+
+    <footer class="footer">
+      <h3>
+        <a href="/articles"> Перейти ко всем статьям. </a>
+      </h3>
+    </footer>
+
+  </body>
+</html>
